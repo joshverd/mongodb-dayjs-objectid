@@ -1,0 +1,22 @@
+.inputWrapper {
+  margin-bottom: 10px;
+  border: 1px solid #333;
+  padding: 10px;
+  width: 300px;
+  border-radius: 4px;
+  display: flex;
+
+  > span {
+    font-size: 16px;
+    color: #f0f0f0;
+  }
+
+  > .input {
+    color: #f0f0f0;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    flex: 1 1;
+  }
+}
