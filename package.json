@@ -1,0 +1,26 @@
+{
+  "name": "mongodb-dayjs-objectid",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "start": "next dev"  
+  },
+  "dependencies": {
+    "bson-objectid": "^2.0.4",
+    "dayjs": "^1.11.10",
+    "next": "^14.2.13",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-particles": "^2.12.2",
+    "sass": "^1.69.5",
+    "tsparticles-slim": "^2.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5",
+    "vercel": "^32.6.1"
+  }
+}
