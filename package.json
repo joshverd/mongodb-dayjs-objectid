@@ -7,6 +7,7 @@
     "start": "next dev"
   },
   "dependencies": {
+    "@next/third-parties": "^15.1.7",
     "@types/js-cookie": "^3.0.6",
     "bson-objectid": "^2.0.4",
     "dayjs": "^1.11.10",
