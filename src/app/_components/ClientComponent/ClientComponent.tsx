@@ -65,7 +65,7 @@ const ClientComponent = ({ initialDayjsExpressions }: ClientComponentProps) => {
 
     setDayjsExpressions(expressions);
 
-    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(JSON.stringify(expressions))}; path=/; max-age=31536000`;
+    document.cookie = `${COOKIE_NAME}=${encodeURIComponent(JSON.stringify(expressions))}; path=/; max-age=31536000; domain=mongodb.joshverd.com; SameSite=Lax`;
   };
 
   return (
