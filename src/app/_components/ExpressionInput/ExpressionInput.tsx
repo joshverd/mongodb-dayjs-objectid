@@ -10,15 +10,15 @@ dayjs.extend(utc);
 interface ExpressionInputProps {
   onTimeChange: (time: dayjs.Dayjs) => void;
   onError: (error: string | null) => void;
-}
+  onExpressionChange: (expression: string) => void;
+  expression: string,
+};
 
-const ExpressionInput = ({ onTimeChange, onError }: ExpressionInputProps) => {
-  const [inputValue, setInputValue] = useState('');
+const ExpressionInput = ({ onTimeChange, onError, onExpressionChange, expression }: ExpressionInputProps) => {
+  const [inputValue, setInputValue] = useState(expression);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    let value = event.target.value;
-
+  const handleInputChange = (value: string) => {
     if (value.length > 0 && value[0] !== '.') value = `.${value}`;
 
     setInputValue(value);
@@ -31,6 +31,8 @@ const ExpressionInput = ({ onTimeChange, onError }: ExpressionInputProps) => {
       if (time.isValid()) {
         onTimeChange(time);
         onError(null);
+
+        onExpressionChange(value);
       } else {
         onError('Invalid input');
       }
@@ -46,6 +48,10 @@ const ExpressionInput = ({ onTimeChange, onError }: ExpressionInputProps) => {
   }, []);
 
   useEffect(() => {
+    handleInputChange(expression);
+  }, [ expression ]);
+
+  useEffect(() => {
     // Small delay to ensure DOM is ready and other effects have completed
     const timeoutId = setTimeout(() => {
       if (inputRef.current) {
@@ -56,14 +62,26 @@ const ExpressionInput = ({ onTimeChange, onError }: ExpressionInputProps) => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  const putCursorAtEnd = () => {
+    if (inputRef.current) {
+      console.log('Putting cursor at end');
+
+      inputRef.current.setSelectionRange(inputValue.length, inputValue.length);
+      inputRef.current.focus();
+    }
+  };
+
   return (
-    <div className={style.inputWrapper}>
+    <div 
+      className={style.inputWrapper}
+      onClick={putCursorAtEnd}
+    >
       <span>dayjs.utc()</span>
       <input
         type="text"
         className={style.input}
         value={inputValue}
-        onChange={handleInputChange}
+        onChange={(event) => handleInputChange(event.target.value)}
         placeholder=".add(1, 'day')"
         ref={inputRef}
       />

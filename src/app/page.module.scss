@@ -1,4 +1,3 @@
-// page.module.scss
 @import './z-indices.scss';
 
 .main {
@@ -7,49 +6,4 @@
   position: relative;
   overflow: hidden;
   background-color: #121212; // Dark background for dark mode
-
-  > .contentWrapper {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    z-index: $content-z-index;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    flex-direction: column;
-    color: white;
-
-    > .objectID,
-    > .time {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 4px;
-      width: 300px;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    > .objectID {
-      cursor: pointer;
-      outline: none;
-    }
-
-    > .time {
-      margin-top: 10px;
-    }
-
-    > .error {
-      background-color: #EC6C5F;
-      color: #fff;
-      font-size: 16px;
-      padding: 10px;
-      width: 300px;
-      text-align: center;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-  }
 }

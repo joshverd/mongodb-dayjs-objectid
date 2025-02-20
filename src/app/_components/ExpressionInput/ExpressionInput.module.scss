@@ -7,9 +7,16 @@
   display: flex;
   box-sizing: border-box;
 
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+
   > span {
     font-size: 16px;
     color: #f0f0f0;
+
+    cursor: pointer;
   }
 
   > .input {
@@ -19,5 +26,6 @@
     outline: none;
     font-size: 16px;
     flex: 1 1;
+    padding-left: 0;
   }
 }
