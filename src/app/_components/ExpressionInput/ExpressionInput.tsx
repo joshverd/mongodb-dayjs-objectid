@@ -46,9 +46,14 @@ const ExpressionInput = ({ onTimeChange, onError }: ExpressionInputProps) => {
   }, []);
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
+    // Small delay to ensure DOM is ready and other effects have completed
+    const timeoutId = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 0);
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (

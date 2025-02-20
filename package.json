@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "start": "next dev"  
+    "start": "next dev"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "bson-objectid": "^2.0.4",
     "dayjs": "^1.11.10",
+    "js-cookie": "^3.0.5",
     "next": "^14.2.13",
     "react": "^18",
     "react-dom": "^18",

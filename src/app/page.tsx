@@ -15,6 +15,7 @@ const Home = () => {
   const objectID = useMemo(() => {
     const timestamp = time.valueOf();
     const objectID = new ObjectId(Math.floor(timestamp / 1000));
+
     return objectID.toString();
   }, [time]);
 
@@ -26,17 +27,34 @@ const Home = () => {
     setError(newError);
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(objectID);
+
+    // Save the timestamp to local storage in an array for later use
+    const timestamps = JSON.parse(localStorage.getItem('timestamps') || '[]');
+    
+    timestamps.unshift(time.valueOf());
+    
+    // Only keep the last 5 items
+    if (timestamps.length > 5) {
+      timestamps.splice(5);
+    }
+
+    localStorage.setItem('timestamps', JSON.stringify(timestamps));
+  };
+
   return (
     <main className={style.main}>
       <div className={style.contentWrapper}>
         <ExpressionInput onTimeChange={handleTimeChange} onError={handleError} />
         {!error && (
           <>
-            <div className={style.objectId}>{objectID}</div>
+            <button className={style.objectID} onClick={copyToClipboard}>{objectID}</button>
             <div className={style.time}>{time.format('MMMM D, YYYY [at] h:mm:ss A')}</div>
           </>
         )}
         {error && <div className={style.error}>{error}</div>}
+        {/*TODO: Add a list of timestamps*/}
       </div>
     </main>
   );

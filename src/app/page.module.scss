@@ -19,7 +19,7 @@
     flex-direction: column;
     color: white;
 
-    > .objectId,
+    > .objectID,
     > .time {
       background-color: #333;
       color: #fff;
@@ -29,10 +29,27 @@
       border-radius: 4px;
       width: 300px;
       text-align: center;
+      box-sizing: border-box;
+    }
+
+    > .objectID {
+      cursor: pointer;
+      outline: none;
     }
 
     > .time {
       margin-top: 10px;
+    }
+
+    > .error {
+      background-color: #EC6C5F;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px;
+      width: 300px;
+      text-align: center;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
   }
 }
