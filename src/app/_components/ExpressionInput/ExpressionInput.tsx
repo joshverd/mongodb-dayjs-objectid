@@ -16,6 +16,8 @@ interface ExpressionInputProps {
 
 const ExpressionInput = ({ onTimeChange, onError, onExpressionChange, expression }: ExpressionInputProps) => {
   const [inputValue, setInputValue] = useState(expression);
+  
+  const inputWrapperRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (value: string) => {
@@ -62,10 +64,15 @@ const ExpressionInput = ({ onTimeChange, onError, onExpressionChange, expression
     return () => clearTimeout(timeoutId);
   }, []);
 
-  const putCursorAtEnd = () => {
-    if (inputRef.current) {
-      console.log('Putting cursor at end');
+  const putCursorAtEnd = (e: React.MouseEvent<HTMLDivElement>) => {
+    // If the click is inside the input element, don't set the cursor anywhere
+    if (inputRef.current?.contains(e.target as Node)) {
+      return;
+    }
+    
+    e.preventDefault();
 
+    if (inputRef.current) {
       inputRef.current.setSelectionRange(inputValue.length, inputValue.length);
       inputRef.current.focus();
     }
@@ -75,6 +82,7 @@ const ExpressionInput = ({ onTimeChange, onError, onExpressionChange, expression
     <div 
       className={style.inputWrapper}
       onClick={putCursorAtEnd}
+      ref={inputWrapperRef}
     >
       <span>dayjs.utc()</span>
       <input

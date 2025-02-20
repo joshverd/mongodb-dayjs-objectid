@@ -12,11 +12,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
 
+  cursor: pointer;
+
   > span {
     font-size: 16px;
     color: #f0f0f0;
-
-    cursor: pointer;
   }
 
   > .input {
