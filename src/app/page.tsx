@@ -2,7 +2,8 @@ import style from './page.module.scss';
 import { cookies } from 'next/headers';
 
 // Components
-import ClientComponent from './_components/ClientComponent/ClientComponent';
+import ClientComponent from '@components/ClientComponent/ClientComponent';
+import GithubLogo from '@components/GithubLogo/GithubLogo';
 
 const COOKIE_NAME = 'objectid-dayjs-expressions';
 
@@ -14,6 +15,13 @@ const Home = () => {
   return (
     <main className={style.main}>
       <ClientComponent initialDayjsExpressions={initialDayjsExpressions} />
+      <a 
+        target="_blank" 
+        className={style.githubLinkWrapper} 
+        href="https://github.com/joshverd/mongodb-dayjs-objectid"
+      >
+        <GithubLogo className={style.githubLogo} />
+      </a>
     </main>
   );
 };

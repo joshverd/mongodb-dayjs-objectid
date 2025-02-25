@@ -8,8 +8,22 @@ import type { Metadata } from 'next';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'MongoDB ObjectID generator',
-  description: 'Create a MongoDB ObjectID from a Dayjs expression',
+  title: 'MongoDB ObjectID Generator & Timestamp Tool',
+  description: 'Create custom MongoDB ObjectIDs from timestamps using Dayjs expressions. Developer tool for generating ObjectIDs with specific dates.',
+  keywords: ['MongoDB', 'ObjectID', 'generator', 'timestamp', 'Dayjs', 'database', 'developer tools'],
+  openGraph: {
+    title: 'MongoDB ObjectID Generator & Timestamp Tool',
+    description: 'Create custom MongoDB ObjectIDs from timestamps using Dayjs expressions',
+    url: 'https://mongodb.joshverd.com',
+    siteName: 'MongoDB ObjectID Generator',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MongoDB ObjectID Generator & Timestamp Tool',
+    description: 'Create custom MongoDB ObjectIDs from timestamps using Dayjs expressions',
+  },
 };
 
 export default function RootLayout({
